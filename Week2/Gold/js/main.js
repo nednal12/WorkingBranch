@@ -1,7 +1,7 @@
-// Project: MIU Week 1
+// Project: MIU Week 2
 // Name: Brent Marohnic
 // Term: 1208
-// Date: 2012-08-02
+// Date: 2012-08-09
 
 window.addEventListener("DOMContentLoaded", function(){
 	
@@ -77,7 +77,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				getIt('clearAll').style.display = "inline";
 				getIt('displayData').style.display = "inline";
 				getIt('addNew').style.display = "none";
-				getIt('items').style.display = "none";
+		
 				break;
 				
 			default:
@@ -90,7 +90,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 	//	formValidate();
 		if (!key){
-			var id = localStorage.length;
+			var id = sessionStorage.length;
 		}
 		else {
 			id = key;
@@ -108,7 +108,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			carStuff.airChange = ["Last Air Filter Change:", getIt('lastAirChange').value];
 			carStuff.notes = ["Notes:", getIt('comments').value];
 		
-		localStorage.setItem(id, JSON.stringify(carStuff));
+		sessionStorage.setItem(id, JSON.stringify(carStuff));
 		alert("Vehicle Saved!");
 		
 	}
@@ -116,7 +116,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	function displayData(){
 		changeDisplay(1);
 		
-		if (localStorage.length === 0) {
+		if (sessionStorage.length === 0) {
 			alert("There is no data to display. Default data was added.");
 			autoPopulate();
 		}
@@ -128,12 +128,12 @@ window.addEventListener("DOMContentLoaded", function(){
 		document.body.appendChild(makeDiv);
 		getIt('items').style.display = "block";
 		
-		for (var i=0, j=localStorage.length; i<j; i++) {
+		for (var i=0, j=sessionStorage.length; i<j; i++) {
 			var makeLi = document.createElement('li');
 			var linksLi = document.createElement('li');
 			makeList.appendChild(makeLi);
-			var key = localStorage.key(i);
-			var value = localStorage.getItem(key);
+			var key = sessionStorage.key(i);
+			var value = sessionStorage.getItem(key);
 			
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
@@ -146,7 +146,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				makeSubLi.innerHTML = optSubText;
 				makeSubList.appendChild(linksLi);
 			}
-			makeItemLinks(localStorage.key(i), linksLi); // Create the edit and delete links for items in local storage.
+			makeItemLinks(sessionStorage.key(i), linksLi); // Create the edit and delete links for items in local storage.
 		}
 	}
 	
@@ -160,8 +160,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	function autoPopulate(){
 		// Populate display data with data retrieved from the JSON object whenever there is no data in local storage.
 		for(var n in json) {
-			var id = localStorage.length;
-			localStorage.setItem(id, JSON.stringify(json[n]));
+			var id = sessionStorage.length;
+			sessionStorage.setItem(id, JSON.stringify(json[n]));
 		}
 	}
 	
@@ -193,7 +193,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	function editItem(){
-		var value = localStorage.getItem(this.key);
+		var value = sessionStorage.getItem(this.key);
 		var carStuff = JSON.parse(value);
 		alert(this.key);
 		changeDisplay(0);
@@ -244,7 +244,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	function deleteItem() {
 		var ask = confirm("Are you sure you want to delete this vehicle?");
 		if (ask){
-			localStorage.removeItem(this.key);
+			sessionStorage.removeItem(this.key);
 			window.location.reload();
 		}
 		else {
@@ -255,11 +255,11 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	
 	function clearStoredData(){
-		if (localStorage.length === 0) {
+		if (sessionStorage.length === 0) {
 			alert("No stored data to clear!");
 			changeDisplay(0);
 		} else {
-			localStorage.clear();
+			sessionStorage.clear();
 			alert("All verhicle information has been deleted!");
 			window.location.reload();
 			return false;
@@ -321,17 +321,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	
-/*	
-	function formValidate(){
-		for (var i = 0, j = 5, k=getIt(bigForm) ; i<j; i++ ) {
-			if (k[0].id) {
-				alert(k[0].id);
-			}
-		}
-		
-	}
-*/	
+
 	var save = getIt('saveIt');
 	save.addEventListener('click', validate);
 	
