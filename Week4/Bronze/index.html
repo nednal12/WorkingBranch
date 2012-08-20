@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- Project: MIU Week 2 -->
+<!-- Name: Brent Marohnic -->
+<!-- Term: 1208 -->
+<!-- Date: 2012-08-09 -->
+
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="keywords" content="Vehicle Service Tracker App" />
+		<meta name="description" content="Keep your vehicles properly serviced" />
+		<meta name="robots" content="index, follow" />
+		<title>Maintenance Tracker</title>
+		
+		
+		<!--  Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+		<!-- Mobile IE needs ClearType for smoothing fonts -->
+		<meta http-equiv="cleartype" content="on">
+	
+		<!-- StyleSheets under here -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" />
+	
+		<!-- JavaScript is normally at the end of the body, except for Modernizr which enables HTML5 elements & feature detects -->
+		<script src="js/libs/modernizr.custom.min.js"></script>
+
+	</head>
+	<body>
+	
+	<!--  ------------------------------------------- Intial Page ------------------------------------------------------- -->
+	<div data-role="page" id="page1">
+		
+		<div data-role="header" class="header">
+			<div id="searchDiv">
+				<input type="search" id="searchText" placeholder="search" data-role="none"/>
+				<a href="#search"><input type="submit" id="searchBtn" value="Go" data-role="none"/></a> 
+			</div>
+			<p>Maintenance Tracker</p>
+		</div>
+		
+		<div data-role="content">
+			<h6>Keep Track of Your Vehicle's Maintenance History</h6>
+			<fieldset class="ui-grid-b" id="feature">
+				<div class="ui-block-a">
+					<img src="images/feature.jpg" alt="Woman checking car's oil." id="featureJPG" height="120px" width="80px"/>
+				</div>
+				<div class="ui-block-b" id="featureText">
+					<p>Add Vehicle</p>
+				</div>
+				<div class="ui-block-c" id="featureBtn">
+					<a href="addItem.html" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-r" data-iconpos="notext" data-transition="slide"></a>
+				</div>
+			</fieldset>
+
+			<div data-role="listview" data-inset="true">
+				 
+				 <li data-role="list-divider">
+				 	<h3>Browse</h3>
+				 </li>
+				 
+			
+				<li>
+					<div data-role="collapsible-set" id="ownersSet">
+				
+						<div data-role="collapsible" id="ownersList">
+							<h3 id="ownersBtn">Owners</h3>
+								<div class="ui-grid-b" id="ownersGrid"></div>
+						</div>
+				
+						<div data-role="collapsible" id="makesList">
+							<h3 id="makesBtn">Vehicle Makes</h3>
+							<div class="ui-grid-b" id="makesGrid"></div>
+						</div>
+				
+						<div data-role="collapsible" id="modelsList">
+							<h3 id="modelsBtn">Vehicle Models</h3>
+							<div class="ui-grid-b" id="modelsGrid"></div>
+						</div>
+				
+					</div>
+				</li>
+			</div>
+			
+		</div>	
+		
+		<div data-role="footer" data-position="fixed" data-id="fixedFooter">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
+					<li><a href="../Gold/index.html" data-icon="star" >Gold App</a></li>
+					<li><a href="https://github.com/nednal12/WorkingBranch.git" data-icon="gear" >Git Hub</a></li>
+					<li><a href="#thanks" data-icon="plus">Thanks</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!--  ------------------------------------------- Owners Page ------------------------------------------------------- -->
+	<div data-role="page" id="owners" data-add-back-btn="true">
+		
+		<div data-role="header" class="header">
+			<p>Owners</p>
+		</div>
+			
+		<div data-role="content">
+			
+			<div data-role="collapsible-set" id="ownersSet">
+				
+				<div data-role="collapsible" id="ownersList" data-collapsed="false">
+					<h3>Owners</h3>
+				</div>
+				
+			</div>
+
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="fixedFooter">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Home</a></li>
+					<li><a href="../Gold/index.html" data-icon="star" >Gold App</a></li>
+					<li><a href="https://github.com/nednal12/WorkingBranch.git" data-icon="gear" >Git Hub</a></li>
+					<li><a href="#thanks" data-icon="plus">Thanks</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!--  ---------------------------------------- Vehicle Makes Page ---------------------------------------------------- -->
+	<div data-role="page" id="makes" data-add-back-btn="true">
+		
+		<div data-role="header" class="header">
+			<p>Vehicles Makes</p>
+		</div>
+			
+		<div data-role="content">
+			<div data-role="collapsible-set" id="makesSet">
+				
+				<div data-role="collapsible" id="makesList" data-collapsed="false">
+					<h3>Vehicle Makes</h3>
+				</div>
+				
+			</div>
+
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="fixedFooter">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Home</a></li>
+					<li><a href="../Gold/index.html" data-icon="star" >Gold App</a></li>
+					<li><a href="https://github.com/nednal12/WorkingBranch.git" data-icon="gear" >Git Hub</a></li>
+					<li><a href="#thanks" data-icon="plus">Thanks</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!--  ---------------------------------------- Vehicle Models Page ---------------------------------------------------- -->
+	<div data-role="page" id="models" data-add-back-btn="true">
+		
+		<div data-role="header" class="header">
+			<p>Vehicles Models</p>
+		</div>
+			
+		<div data-role="content">
+			<div data-role="collapsible-set" id="modelsSet">
+				
+				<div data-role="collapsible" id="modelsList" data-collapsed="false">
+					<h3>Vehicle Models</h3>
+				</div>
+				
+			</div>
+
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="fixedFooter">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Home</a></li>
+					<li><a href="../Gold/index.html" data-icon="star" >Gold App</a></li>
+					<li><a href="https://github.com/nednal12/WorkingBranch.git" data-icon="gear" >Git Hub</a></li>
+					<li><a href="#thanks" data-icon="plus">Thanks</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!--  ------------------------------------------ Search Page ------------------------------------------------------ -->
+	<div data-role="page" id="search" data-add-back-btn="true">
+		
+		<div data-role="header" class="header">
+			<p>Search Results</p>
+		</div>
+			
+		<div data-role="content" id="searchContent">
+			
+			<div data-role="collapsible-set" id="searchSet"></div>
+
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="fixedFooter">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Home</a></li>
+					<li><a href="../Gold/index.html" data-icon="star" >Gold App</a></li>
+					<li><a href="https://github.com/nednal12/WorkingBranch.git" data-icon="gear" >Git Hub</a></li>
+					<li><a href="#thanks" data-icon="plus">Thanks</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!--  ---------------------------------------- Maintenance Schedules Page --------------------------------------------- -->
+	<div data-role="page" id="schedules" data-add-back-btn="true">
+		<div data-role="header" class="header">
+			<p>Service Schedules</p>
+		</div>
+			
+		<div data-role="content">
+			<p>This page is currently under construction. It is our intent to provide increased customer satisfaction 
+				by providing model-specific manufacturer's service schedules in upcoming versions of this app.</p>
+
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="fixedFooter">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Home</a></li>
+					<li><a href="../Gold/index.html" data-icon="star" >Gold App</a></li>
+					<li><a href="https://github.com/nednal12/WorkingBranch.git" data-icon="gear" >Git Hub</a></li>
+					<li><a href="#thanks" data-icon="plus">Thanks</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!--  ---------------------------------------- Acknowledgements Page -------------------------------------------------- -->
+	<div data-role="page" id="thanks" data-add-back-btn="true">
+		<div data-role="header" class="header">
+			<p>Acknowledgements</p>
+		</div>
+			
+		<div data-role="content">
+			<h1>Special Thanks to the Following:</h1>
+			<h2>Ms. Alarcon</h2>
+			<p>Thank you for providing me with additional time to submit my Week1 Discussion Video and for 
+				providing very challenging assignments.</p>
+			
+			<h2>iStockphoto.com</h2>
+			<p>For the photo used in the feature section of index.html.</p>
+
+		</div>
+		
+		<div data-role="footer" data-position="fixed" data-id="fixedFooter">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html" data-icon="home">Home</a></li>
+					<li><a href="../Gold/index.html" data-icon="star" >Gold App</a></li>
+					<li><a href="https://github.com/nednal12/WorkingBranch.git" data-icon="gear" >Git Hub</a></li>
+					<li><a href="#thanks" data-icon="plus" class="ui-btn-active ui-state-persist">Thanks</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+		<!-- JavaScript under here -->
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+		<script type="text/javascript" src="js/json.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>

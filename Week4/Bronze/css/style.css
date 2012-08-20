@@ -1,0 +1,42 @@
+/*
+Project: MIU Week 2
+Name: Brent Marohnic
+Term: 1208
+Date: 2012-08-09
+*/ 
+
+
+.header {
+	text-align:center;
+}
+
+#searchDiv {
+	text-align:right;
+}
+
+.vAlignMiddle {
+	vertical-align:middle;
+}
+
+#feature {
+	border:1px solid black;
+}
+
+.divider {
+	border-bottom:1px solid black;
+}
+
+#featureText {
+	padding-top:35px;
+	padding-left:5px;
+}
+
+#featureBtn {
+	padding-top:45px;
+	padding-left:20px;
+}
+
+label.error {
+	color: #cc0000;
+	margin: 10px 0px;
+}
